@@ -78,4 +78,13 @@ public class PetServiceImpl implements PetService {
     public Integer getOldestAge() {
         return petRepository.findOldestAge();
     }
+
+    @Override
+    public Pet updatePetName(Long id, String name) {
+        Pet pet = petRepository.findById(id)
+                           .orElseThrow(() -> new IllegalArgumentException("Pet not found"));
+        pet.setName(name);
+        return petRepository.save(pet);
+    }
 }
+

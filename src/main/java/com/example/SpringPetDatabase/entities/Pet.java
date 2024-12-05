@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "pets")
 @Data 
+@ToString(exclude = "household")
 @NoArgsConstructor 
 @AllArgsConstructor 
 public class Pet {
@@ -27,4 +29,8 @@ public class Pet {
 
     @Column(nullable = false)
     private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "household_eircode", referencedColumnName = "eircode")
+    private Household household; 
 }

@@ -1,7 +1,7 @@
 //generated tests as asked in lab 5
 
 package com.example.SpringPetDatabase.services;
-
+import com.example.SpringPetDatabase.entities.Household;
 import com.example.SpringPetDatabase.entities.Pet;
 import com.example.SpringPetDatabase.exception.PetNotFoundException;
 import com.example.SpringPetDatabase.repositories.PetRepository;
@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
 
 class PetServiceTests {
 
@@ -32,8 +33,9 @@ class PetServiceTests {
 
     @Test
     void testCreatePet() {
-        Pet pet = new Pet(null, "Buddy", "Dog", "Golden Retriever", 3);
-        when(petRepository.save(pet)).thenReturn(new Pet(1L, "Buddy", "Dog", "Golden Retriever", 3));
+        Household household = new Household("H123", 3, 5, true, null);
+        Pet pet = new Pet(null, "Buddy", "Dog", "Golden Retriever", 3, household);
+        when(petRepository.save(pet)).thenReturn(new Pet(1L, "Buddy", "Dog", "Golden Retriever", 3, household));
 
         Pet savedPet = petService.createPet(pet);
 
@@ -44,7 +46,8 @@ class PetServiceTests {
 
     @Test
     void testGetPetById() {
-        Pet pet = new Pet(1L, "Buddy", "Dog", "Golden Retriever", 3);
+        Household household = new Household("H123", 3, 5, true, null);
+        Pet pet = new Pet(1L, "Buddy", "Dog", "Golden Retriever", 3, household);
         when(petRepository.findById(1L)).thenReturn(Optional.of(pet));
 
         Pet foundPet = petService.getPetById(1L);
