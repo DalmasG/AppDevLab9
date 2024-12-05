@@ -17,5 +17,8 @@ public interface HouseholdService {
     Optional<Household> findHouseholdByEircodeWithPets(String eircode);
 
     List<Household> findHouseholdsWithNoPets();
+
+    int getTotalHouseholds();
+
     
 }

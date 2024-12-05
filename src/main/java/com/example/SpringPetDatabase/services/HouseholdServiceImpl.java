@@ -52,4 +52,10 @@ public class HouseholdServiceImpl implements HouseholdService {
     public List<Household> findHouseholdsWithNoPets() {
         return householdRepository.findHouseholdsWithNoPets();
     }
+
+    @Override
+    public int getTotalHouseholds() {
+        return (int) householdRepository.count();
+    }
+
 }

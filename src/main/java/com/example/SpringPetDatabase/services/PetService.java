@@ -27,4 +27,6 @@ public interface PetService {
     Double getAverageAge();
 
     Integer getOldestAge();
+
+    int getTotalPets();
 }

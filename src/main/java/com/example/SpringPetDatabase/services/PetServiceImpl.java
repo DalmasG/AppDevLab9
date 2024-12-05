@@ -86,5 +86,10 @@ public class PetServiceImpl implements PetService {
         pet.setName(name);
         return petRepository.save(pet);
     }
+
+        @Override
+    public int getTotalPets() {
+        return (int) petRepository.count();
+    }
 }
 
